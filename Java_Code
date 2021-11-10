@@ -1,0 +1,27 @@
+/* Recursive method to return number of 8's in any non-neg int n with the 
+   additional rule that it will double count an 8 if it follows another 8 */
+public int count8(int n) {
+  int count = 0;
+  String i = Integer.toString(n);
+  if (i.length() < 3) {
+    if (n / 10 == 8) {
+      count++;
+    }
+    if (n % 10 == 8) {
+      count++;
+    }
+    if ((n/10) % 10 == 8 && n % 10 == 8) {
+      count++;
+    }
+  return count;
+  } else if (i.length() >= 3) {
+    if (n % 10 == 8) {
+      count++;
+    }
+    if ((n/10) % 10 == 8 && n % 10 == 8) {
+      count++;
+    }
+      return count + count8(n/10);
+  }
+  return count;
+}
